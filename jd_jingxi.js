@@ -39,7 +39,7 @@ if ($.isNode()) {
       $.index = i + 1;
       $.nickName = '';
       await TotalBean();
-      console.log(`*****************开始京东账号${$.index} ${$.nickName || $.UserName}京豆签到*******************\n`);
+      console.log(`*****************开始京东账号${$.index} ${$.nickName || $.UserName}京喜签到*******************\n`);
       console.log(`⚠⚠⚠⚠⚠⚠⚠⚠  如遇到Bark APP推送通知消息失败的,请换用其他通知方式,Bark对推送内容长度有限制  ⚠⚠⚠⚠⚠⚠⚠⚠⚠\n`)
       await changeFile(content);
       await  execSign();
@@ -85,14 +85,14 @@ async function execSign() {
       $.beanSignTime = timeFormat(UTC8);
       console.log(`脚本执行完毕时间：${$.beanSignTime}`)
       if (BarkContent) {
-        await notify.sendNotify(`京豆签到 - 账号${$.index} - ${$.nickName || $.UserName}`, `【签到号 ${$.index}】: ${$.nickName || $.UserName}\n【签到时间】:  ${$.beanSignTime}\n${BarkContent}`);
+        await notify.sendNotify(`京喜签到 - 账号${$.index} - ${$.nickName || $.UserName}`, `【签到号 ${$.index}】: ${$.nickName || $.UserName}\n【签到时间】:  ${$.beanSignTime}\n${BarkContent}`);
       }
     }
     //运行完成后，删除下载的文件
     console.log('运行完成后，删除下载的文件\n')
     await deleteFile(path);//删除result.txt
     await deleteFile(jingxiPath);//删除jingxi.js
-    console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}京豆签到完成*******************\n`);
+    console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}京喜签到完成*******************\n`);
   } catch (e) {
     console.log("京东签到脚本执行异常:" + e);
   }
