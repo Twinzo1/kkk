@@ -57,7 +57,7 @@ async function execSign() {
       // 如果没有提供通知推送，则打印日志
       console.log('没有提供通知推送，则打印脚本执行日志')
       await exec(`node jingxi.js`, { stdio: "inherit" });
-//    }
+    }
     // await exec("node jingxi.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
     //发送通知
