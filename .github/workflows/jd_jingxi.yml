@@ -23,10 +23,7 @@ jobs:
                   npm install
             - name: "运行【京喜每日签到】"
               run: |
-                   curl https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jingxi.js > ~/jingxi.js
-                   curl https://raw.githubusercontent.com/Sunert/Scripts/master/Task/sendNotify.js > ~/sendNotify.js
-                   curl https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jdCookie.js > ~/jdCookie.js
-                   chmod 755 ~/jingxi.js; chmod 755 ~/sendNotify.js; chmod 755 ~/jdCookie.js; node ~/jingxi.js
+                   node jd_jingxi.js
               env:
                   JD_COOKIE: ${{ secrets.JD_COOKIE }}
                   JD_DEBUG: ${{ secrets.JD_DEBUG }}
