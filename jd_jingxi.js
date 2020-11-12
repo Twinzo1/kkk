@@ -32,7 +32,7 @@ if ($.isNode()) {
   // 下载最新代码
   await downFile();
   const content = await fs.readFileSync('./jingxi.js', 'utf8')
-  for (let i =0; i < cookiesArr.length; i++) {
+  for (let i =0; i < 1; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
@@ -50,14 +50,13 @@ if ($.isNode()) {
     .finally(() => $.done())
 async function execSign() {
   console.log(`\n开始执行脚本签到，请稍等`)
-  console.log(echo cookie >> result.txt)
-  //try {
-//    if (notify.SCKEY || notify.BARK_PUSH || notify.DD_BOT_TOKEN || (notify.TG_BOT_TOKEN && notify.TG_USER_ID) || notify.IGOT_PUSH_KEY) {
-  //    await exec("node jingxi.js >> result.txt");
- //   } else {
+  try {
+    if (notify.SCKEY || notify.BARK_PUSH || notify.DD_BOT_TOKEN || (notify.TG_BOT_TOKEN && notify.TG_USER_ID) || notify.IGOT_PUSH_KEY) {
+      await exec("node jingxi.js >> result.txt");
+    } else {
       // 如果没有提供通知推送，则打印日志
-   //   console.log('没有提供通知推送，则打印脚本执行日志')
-//      await exec(`node jingxi.js`, { stdio: "inherit" });
+      console.log('没有提供通知推送，则打印脚本执行日志')
+      await exec(`node jingxi.js`, { stdio: "inherit" });
 //    }
     // await exec("node jingxi.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
