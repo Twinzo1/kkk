@@ -15,7 +15,7 @@ const exec = require('child_process').execSync
 const fs = require('fs')
 const download = require('download');
 const path = "./result.txt";
-const JD_DailyBonusPath = "./jingxi.js";
+const jingxiPathPath = "./jingxi.js";
 let cookiesArr = [], cookie = '';
 
 if ($.isNode()) {
@@ -52,13 +52,13 @@ async function execSign() {
   console.log(`\n开始执行脚本签到，请稍等`)
   try {
     if (notify.SCKEY || notify.BARK_PUSH || notify.DD_BOT_TOKEN || (notify.TG_BOT_TOKEN && notify.TG_USER_ID) || notify.IGOT_PUSH_KEY) {
-      await exec("node JD_DailyBonus.js >> result.txt");
+      await exec("node jingxi.js >> result.txt");
     } else {
       // 如果没有提供通知推送，则打印日志
       console.log('没有提供通知推送，则打印脚本执行日志')
-      await exec(`node JD_DailyBonus.js`, { stdio: "inherit" });
+      await exec(`node jingxi.js`, { stdio: "inherit" });
     }
-    // await exec("node JD_DailyBonus.js", { stdio: "inherit" });
+    // await exec("node jingxi.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
     //发送通知
     if ($.isNode()) {
@@ -91,7 +91,7 @@ async function execSign() {
     //运行完成后，删除下载的文件
     console.log('运行完成后，删除下载的文件\n')
     await deleteFile(path);//删除result.txt
-    await deleteFile(JD_DailyBonusPath);//删除jingxi.js
+    await deleteFile(jingxiPath);//删除jingxi.js
     console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}京豆签到完成*******************\n`);
   } catch (e) {
     console.log("京东签到脚本执行异常:" + e);
@@ -127,7 +127,7 @@ async function changeFile (content) {
     newContent = newContent.replace(/tm\s=.*/, `tm = new Date(new Date().toLocaleDateString()).getTime() - 28800000;`);
   }
   try {
-    await fs.writeFileSync(JD_DailyBonusPath, newContent, 'utf8');
+    await fs.writeFileSync(jingxiPath, newContent, 'utf8');
     console.log('替换变量完毕');
   } catch (e) {
     console.log("京喜签到写入文件异常:" + e);
