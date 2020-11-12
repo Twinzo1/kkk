@@ -15,7 +15,7 @@ const exec = require('child_process').execSync
 const fs = require('fs')
 const download = require('download');
 const path = "./result.txt";
-const jingxiPathPath = "./jingxi.js";
+const jingxiPath = "./jingxi.js";
 let cookiesArr = [], cookie = '';
 
 if ($.isNode()) {
