@@ -1,5 +1,5 @@
 /*
-京东赚赚,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/Sunert/Scripts/master/Task/jingxi.js
+京东赚赚,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.js
 Node.JS专用
 更新时间：2020-11-09
 从 github @Twinzo1改写而来
@@ -32,7 +32,7 @@ if ($.isNode()) {
   // 下载最新代码
   await downFile();
   const content = await fs.readFileSync('./jdzz.js', 'utf8')
-  for (let i =0; i < 1; i++) {
+  for (let i =0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
@@ -127,7 +127,7 @@ async function changeFile (content) {
     newContent = newContent.replace(/tm\s=.*/, `tm = new Date(new Date().toLocaleDateString()).getTime() - 28800000;`);
   }
   try {
-    await fs.writeFileSync(jingxiPath, newContent, 'utf8');
+    await fs.writeFileSync(jdzzPath, newContent, 'utf8');
     console.log('替换变量完毕');
   } catch (e) {
     console.log("京喜签到写入文件异常:" + e);
