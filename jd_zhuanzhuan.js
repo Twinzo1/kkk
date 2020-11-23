@@ -52,11 +52,11 @@ async function execSign() {
   console.log(`\n开始执行脚本签到，请稍等`)
   try {
     if (notify.SCKEY || notify.BARK_PUSH || notify.DD_BOT_TOKEN || (notify.TG_BOT_TOKEN && notify.TG_USER_ID) || notify.IGOT_PUSH_KEY) {
-      await exec("node jdzz.js >> result.txt");
+      await exec(`${process.execPath} ${jdzzPath} >> ${resultPath}`);
     } else {
       // 如果没有提供通知推送，则打印日志
       console.log('没有提供通知推送，则打印脚本执行日志')
-      await exec(`node jdzz.js`, { stdio: "inherit" });
+      await exec(`${process.execPath} ${jdzzPath}`, { stdio: "inherit" });
     }
     // await exec("node jdzz.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
