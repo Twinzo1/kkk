@@ -15,6 +15,7 @@ const exec = require('child_process').execSync
 const fs = require('fs')
 const download = require('download');
 const path = "./result.txt";
+let resultPath = "./result.txt";
 const jdzzPath = "./jdzz.js";
 let cookiesArr = [], cookie = '';
 
