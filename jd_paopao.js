@@ -33,7 +33,7 @@ if ($.isNode()) {
   // 下载最新代码
   await downFile();
   const content = await fs.readFileSync('./jd_paopao.js', 'utf8')
-  for (let i =0; i < cookiesArr.length; i++) {
+  for (let i =0; i < 1; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
