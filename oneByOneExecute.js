@@ -55,7 +55,7 @@ function requireConfig() {
     const file = 'temp.js';
     fs.access(file, fs.constants.W_OK, (err) => {
       resultPath = err ? '/tmp/result.txt' : resultPath;
-      JD_DailyBonusPath = err ? '/tmp/temp.js' : JSPath;
+      JSPath = err ? '/tmp/temp.js' : JSPath;
       outPutUrl = err ? '/tmp/' : outPutUrl;
       resolve()
     });
