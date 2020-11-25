@@ -43,6 +43,7 @@ async function executeOneByOne() {
         console.log('运行完成后，删除下载的文件\n')
         await deleteFile(resultPath);//删除result.txt
         await deleteFile(JSPath);//删除JD_DailyBonus.js
+        await deleteFile("execute.js");//删除JD_DailyBonus.js
         console.log("执行完毕");
     }
 }
