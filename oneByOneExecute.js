@@ -23,7 +23,7 @@ async function downFile() {
 }
 
 async function changeFiele(content, cookie) {
-    let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
+    let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${cookie}`);
     await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
 
@@ -33,9 +33,9 @@ async function executeOneByOne() {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
-        let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
+       // let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
         try {
-            await exec("cat " + newContent + "> exec.js | node exec.js", { stdio: "inherit" });
+            await exec("node execute.js", { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
         }
