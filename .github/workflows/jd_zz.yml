@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【京东赚赚脚本】'
         run: |
-          node jd_zhuanzhuan.js
+          node node onlyOneExecute.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -49,4 +49,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          JD_818_SHAREID_NOTIFY: ${{ secrets.JD_818_SHAREID_NOTIFY }}
+          SYNCURL: https://raw.githubusercontent.com/whyour/hundun/master/quanx/jdzz.js
