@@ -5,12 +5,14 @@ const smartReplace = require("./smartReplace");
 
 // 公共变量
 const Secrets = {
-    JD_COOKIE: process.env.JD_COOKIE, //cokie,多个用&隔开即可
     SyncUrl: process.env.SYNCURL, //签到地址,方便随时变动
     PUSH_KEY: process.env.PUSH_KEY, //server酱推送消息
     BARK_PUSH: process.env.BARK_PUSH, //Bark推送
     TG_BOT_TOKEN: process.env.TG_BOT_TOKEN, //TGBot推送Token
     TG_USER_ID: process.env.TG_USER_ID, //TGBot推送成员ID
+};
+const SECRETS = {
+    JD_COOKIE: process.env.JD_COOKIE, //cokie,多个用&隔开即可
 };
 let CookieJDs = [];
 
@@ -31,7 +33,7 @@ async function executeOneByOne() {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
-        let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
+        let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
         try {
             await exec("cat " + newContent + "> exec.js | node exec.js", { stdio: "inherit" });
         } catch (e) {
