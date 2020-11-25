@@ -45,7 +45,7 @@ async function executeOneByOne() {
 
 async function start() {
     console.log(`当前执行时间:${new Date().toString()}`);
-    if (!Secrets.JD_COOKIE) {
+    if (!SECRETS.JD_COOKIE) {
         console.log("请填写 JD_COOKIE 后在继续");
         return;
     }
@@ -53,7 +53,7 @@ async function start() {
         console.log("请填写 SYNCURL 后在继续");
         return;
     }
-    CookieJDs = Secrets.JD_COOKIE.split("&");
+    CookieJDs = SECRETS.JD_COOKIE.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
