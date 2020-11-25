@@ -39,4 +39,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE }}
-                  SYNCURL: https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js
+                  SYNCURL: https://raw.githubusercontent.com/whyour/hundun/master/quanx/dd_factory.js
