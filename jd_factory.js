@@ -116,9 +116,9 @@ async function downFile () {
   await download(url, './')
 }
 
-async function changeFile (content,cookie) {
+async function changeFile (content,cookiess) {
   console.log(`开始替换变量`)
-  let newContent = content.replace(/var Key = ''/, `var Key = cookie`);
+  let newContent = content.replace(/var Key = ''/, `var Key = ${cookiess}`);
   if (process.env.JD_BEAN_STOP && process.env.JD_BEAN_STOP !== '0') {
     newContent = newContent.replace(/var stop = 0/, `var stop = ${process.env.JD_BEAN_STOP * 1}`);
   }
