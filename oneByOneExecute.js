@@ -30,10 +30,10 @@ async function executeOneByOne() {
     for (let i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
-        console.log(CookieJDs[i])
         console.log("替换变量完毕");
+        let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
         try {
-            await exec("node execute.js", { stdio: "inherit" });
+            await exec("cat " + newContent + "> exec.js | node exec.js", { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
         }
