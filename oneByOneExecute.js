@@ -20,7 +20,7 @@ let CookieJDs = [];
 
 async function changeFiele(content, cookie) {
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
-    await fs.writeFileSync("./execute.js", newContent, "utf8"});
+    await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
 async function downFile () {
   url = Secrets.SyncUrl;
