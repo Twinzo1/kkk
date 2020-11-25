@@ -42,7 +42,7 @@ if ($.isNode()) {
       await TotalBean();
       console.log(`*****************开始京东账号${$.index} ${$.nickName || $.UserName}东东工厂*******************\n`);
       console.log(`⚠⚠⚠⚠⚠⚠⚠⚠  如遇到Bark APP推送通知消息失败的,请换用其他通知方式,Bark对推送内容长度有限制  ⚠⚠⚠⚠⚠⚠⚠⚠⚠\n`)
-      await changeFile(content);
+      await changeFile(content,cookie);
       await  execSign();
     }
   }
@@ -116,9 +116,9 @@ async function downFile () {
   await download(url, './')
 }
 
-async function changeFile (content) {
+async function changeFile (content,cookie) {
   console.log(`开始替换变量`)
-  let newContent = content.replace(/var Key = ''/, `var Key = '${cookie}'`);
+  let newContent = content.replace(/var Key = ''/, `var Key = cookie`);
   if (process.env.JD_BEAN_STOP && process.env.JD_BEAN_STOP !== '0') {
     newContent = newContent.replace(/var stop = 0/, `var stop = ${process.env.JD_BEAN_STOP * 1}`);
   }
