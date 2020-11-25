@@ -30,6 +30,7 @@ async function downFile () {
   } catch (e) {
     console.log("文件下载异常:" + e);
   }
+  await fs.writeFileSync(JSPath, content, "utf8");
 }
 async function executeOneByOne() {
     for (var i = 0; i < CookieJDs.length; i++) {
