@@ -31,7 +31,7 @@ async function executeOneByOne() {
     for (var i = 0; i < CookieJDs.length; i++) {
         await requireConfig();
         await downFile();
-        var content = await fs.readFileSync(JSPath, 'utf8')
+        let content = await fs.readFileSync(JSPath, 'utf8')
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
