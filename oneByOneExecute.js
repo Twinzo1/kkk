@@ -20,7 +20,7 @@ let CookieJDs = [];
 
 async function changeFiele(content, cookie, k) {
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
-    await fs.writeFileSync("./execute" +  toString(k) + ".js", newContent, "utf8");
+    await fs.writeFileSync("./execute" + toString(k) + ".js", newContent, "utf8");
 }
 async function downFile () {
   let response = await axios.get(Secrets.SyncUrl);
@@ -36,7 +36,8 @@ async function executeOneByOne() {
         await changeFiele(content, CookieJDs[i], i);
         console.log("替换变量完毕");
         try {
-            await exec("node `'./execute' +  toString(k) + '.js'`", { stdio: "inherit" });
+            executeCommand = "node " + './execute' +  toString(k) + '.js';
+            await exec(executeCommand, { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
         }
