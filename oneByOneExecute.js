@@ -27,6 +27,9 @@ async function changeFiele(content, cookie) {
 
 async function executeOneByOne() {
     for (var i = 0; i < CookieJDs.length; i++) {
+        // 下载最新代码
+        await downFile();
+        console.log("下载代码完毕");
         let content = await fs.readFileSync("./temp.js", "utf8");
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
@@ -52,9 +55,6 @@ async function start() {
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
-    // 下载最新代码
-    await downFile();
-    console.log("下载代码完毕");
     await executeOneByOne();
     console.log("全部执行完毕");
 }
