@@ -23,8 +23,6 @@ async function changeFiele(content, cookie) {
     await fs.writeFileSync("./execute.js", newContent, {flag:'w+', encoding:'utf8'});
 }
 async function downFile () {
-  let url = '';
-  await downloadUrl();
   url = Secrets.SyncUrl;
   try {
     await download(url, outPutUrl);
@@ -47,24 +45,6 @@ async function executeOneByOne() {
         }
         console.log("执行完毕");
     }
-}
-function downloadUrl(url = Secrets.SyncUrl) {
-  return new Promise(resolve => {
-    $.get({url}, async (err, resp, data) => {
-      try {
-        if (err) {
-          console.log(`${JSON.stringify(err)}`)
-          console.log(`检测到您不能访问外网,将使用CDN下载JD_DailyBonus.js文件`)
-        } else {
-          $.body = data;
-        }
-      } catch (e) {
-        $.logErr(e, resp)
-      } finally {
-        resolve();
-      }
-    })
-  })
 }
 async function start() {
     console.log(`当前执行时间:${new Date().toString()}`);
