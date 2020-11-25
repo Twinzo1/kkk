@@ -36,7 +36,7 @@ async function executeOneByOne() {
         await changeFiele(content, CookieJDs[i], i);
         console.log("替换变量完毕");
         try {
-            executeCommand = "node " + './execute' +  toString(k) + '.js';
+            executeCommand = "node " + './execute' +  toString(i) + '.js';
             await exec(executeCommand, { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
