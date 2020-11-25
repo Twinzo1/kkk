@@ -17,7 +17,7 @@ let CookieJDs = [];
 async function downFile() {
     let response = await axios.get(Secrets.SyncUrl);
     let content = response.data;
-    await fs.writeFile("./temp.js", content, "utf8");
+    await fs.writeFileSync("./temp.js", content, "utf8");
 }
 
 async function changeFiele(content, cookie) {
