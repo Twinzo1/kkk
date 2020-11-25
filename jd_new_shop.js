@@ -1,5 +1,5 @@
 /*
-京东新店福利,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_new_shop.js
+东东工厂,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js
 Node.JS专用
 更新时间：2020-11-09
 从 github @Twinzo1改写而来
@@ -7,7 +7,7 @@ version v0.0.1
 create by Twinzo1
 detail url: https://github.com/ruicky/jd_sign_bot
  */
-const $ = new Env('京东新店福利');
+const $ = new Env('东东工厂');
 const notify = $.isNode() ? require('./sendNotify') : '';
 //Node.js用户请在jdCookie.js处填写京东ck;
 const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
@@ -16,7 +16,7 @@ const fs = require('fs')
 const download = require('download');
 const path = "./result.txt";
 let resultPath = "./result.txt";
-const jd_newShopPath = "./jd_new_shop.js";
+const jd_factoryPath = "./jd_factory.js";
 let cookiesArr = [], cookie = '';
 
 if ($.isNode()) {
@@ -32,7 +32,7 @@ if ($.isNode()) {
   }
   // 下载最新代码
   await downFile();
-  const content = await fs.readFileSync('./jd_new_shop.js', 'utf8')
+  const content = await fs.readFileSync('./jd_factory.js', 'utf8')
   for (let i =0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
@@ -40,7 +40,7 @@ if ($.isNode()) {
       $.index = i + 1;
       $.nickName = '';
       await TotalBean();
-      console.log(`*****************开始京东账号${$.index} ${$.nickName || $.UserName}京东新店福利*******************\n`);
+      console.log(`*****************开始京东账号${$.index} ${$.nickName || $.UserName}东东工厂*******************\n`);
       console.log(`⚠⚠⚠⚠⚠⚠⚠⚠  如遇到Bark APP推送通知消息失败的,请换用其他通知方式,Bark对推送内容长度有限制  ⚠⚠⚠⚠⚠⚠⚠⚠⚠\n`)
       await changeFile(content);
       await  execSign();
@@ -53,13 +53,13 @@ async function execSign() {
   console.log(`\n开始执行脚本签到，请稍等`)
   try {
     if (notify.SCKEY || notify.BARK_PUSH || notify.DD_BOT_TOKEN || (notify.TG_BOT_TOKEN && notify.TG_USER_ID) || notify.IGOT_PUSH_KEY) {
-        await exec(`${process.execPath} ${jd_newShopPath} >> ${resultPath}`);
+        await exec(`${process.execPath} ${jd_factoryPath} >> ${resultPath}`);
       } else {
       // 如果没有提供通知推送，则打印日志
       console.log('没有提供通知推送，则打印脚本执行日志')
-      await exec(`${process.execPath} ${jd_newShopPath}`, { stdio: "inherit" });
+      await exec(`${process.execPath} ${jd_factoryPath}`, { stdio: "inherit" });
     }
-    // await exec("node jd_new_shop.js", { stdio: "inherit" });
+    // await exec("node jd_factory.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
     //发送通知
     if ($.isNode()) {
@@ -86,14 +86,14 @@ async function execSign() {
       $.beanSignTime = timeFormat(UTC8);
       console.log(`脚本执行完毕时间：${$.beanSignTime}`)
       if (BarkContent) {
-        await notify.sendNotify(`京东新店福利 - 账号${$.index} - ${$.nickName || $.UserName}`, `【签到号 ${$.index}】: ${$.nickName || $.UserName}\n【签到时间】:  ${$.beanSignTime}\n${BarkContent}`);
+        await notify.sendNotify(`东东工厂 - 账号${$.index} - ${$.nickName || $.UserName}`, `【签到号 ${$.index}】: ${$.nickName || $.UserName}\n【签到时间】:  ${$.beanSignTime}\n${BarkContent}`);
       }
     }
     //运行完成后，删除下载的文件
     console.log('运行完成后，删除下载的文件\n')
     await deleteFile(path);//删除result.txt
-    await deleteFile(jd_newShopPath);//删除jd_new_shop.js
-    console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}京东新店福利完成*******************\n`);
+    await deleteFile(jd_factoryPath);//删除jd_factory.js
+    console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}东东工厂完成*******************\n`);
   } catch (e) {
     console.log("京东签到脚本执行异常:" + e);
   }
@@ -109,7 +109,7 @@ async function downFile () {
   // }
   await downloadUrl();
   if ($.body) {
-    url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_new_shop.js';
+    url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js';
   // } else {
   //  url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js';
   }
@@ -128,10 +128,10 @@ async function changeFile (content) {
     newContent = newContent.replace(/tm\s=.*/, `tm = new Date(new Date().toLocaleDateString()).getTime() - 28800000;`);
   }
   try {
-    await fs.writeFileSync(jd_newShopPath, newContent, 'utf8');
+    await fs.writeFileSync(jd_factoryPath, newContent, 'utf8');
     console.log('替换变量完毕');
   } catch (e) {
-    console.log("京东新店福利写入文件异常:" + e);
+    console.log("东东工厂写入文件异常:" + e);
   }
 }
 async function deleteFile(path) {
@@ -183,13 +183,13 @@ function TotalBean() {
     })
   })
 }
-function downloadUrl(url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_new_shop.js') {
+function downloadUrl(url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js') {
   return new Promise(resolve => {
     $.get({url}, async (err, resp, data) => {
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`检测到您不能访问外网,将使用CDN下载jd_new_shop.js文件`)
+          console.log(`检测到您不能访问外网,将使用CDN下载jd_factory.js文件`)
         } else {
           $.body = data;
         }
