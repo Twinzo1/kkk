@@ -17,20 +17,17 @@ let CookieJDs = [];
 async function downFile() {
     let response = await axios.get(Secrets.SyncUrl);
     let content = response.data;
-    await fs.writeFile("./temp.js", content, {flag:'w+',encoding:'utf8'});
+    await fs.writeFile("./temp.js", content, "utf8"});
 }
 
 async function changeFiele(content, cookie) {
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
-    await fs.writeFileSync("./execute.js", newContent, "utf8");
+    await fs.writeFileSync("./execute.js", newContent, {flag:'w+', encoding:'utf8'});
 }
 
 async function executeOneByOne() {
+    const content = await fs.readFileSync("./temp.js", "utf8");
     for (var i = 0; i < CookieJDs.length; i++) {
-        // 下载最新代码
-        await downFile();
-        console.log("下载代码完毕");
-        let content = await fs.readFileSync("./temp.js", "utf8");
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
@@ -55,6 +52,9 @@ async function start() {
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
+    // 下载最新代码
+    await downFile();
+    console.log("下载代码完毕");
     await executeOneByOne();
     console.log("全部执行完毕");
 }
