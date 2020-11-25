@@ -16,7 +16,7 @@ const fs = require('fs')
 const download = require('download');
 const path = "./result.txt";
 let resultPath = "./result.txt";
-const jd_factoryPath = "./jd_factory.js";
+const jd_factoryPath = "./dd_factory.js";
 let cookiesArr = [], cookie = '';
 
 if ($.isNode()) {
@@ -32,7 +32,7 @@ if ($.isNode()) {
   }
   // 下载最新代码
   await downFile();
-  const content = await fs.readFileSync('./jd_factory.js', 'utf8')
+  const content = await fs.readFileSync('./dd_factory.js', 'utf8')
   for (let i =0; i < cookiesArr.length; i++) {
     cookie = cookiesArr[i];
     if (cookie) {
@@ -59,7 +59,7 @@ async function execSign() {
       console.log('没有提供通知推送，则打印脚本执行日志')
       await exec(`${process.execPath} ${jd_factoryPath}`, { stdio: "inherit" });
     }
-    // await exec("node jd_factory.js", { stdio: "inherit" });
+    // await exec("node dd_factory.js", { stdio: "inherit" });
     // console.log('执行完毕', new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleDateString())
     //发送通知
     if ($.isNode()) {
@@ -92,7 +92,7 @@ async function execSign() {
     //运行完成后，删除下载的文件
     console.log('运行完成后，删除下载的文件\n')
     await deleteFile(path);//删除result.txt
-    await deleteFile(jd_factoryPath);//删除jd_factory.js
+    await deleteFile(jd_factoryPath);//删除dd_factory.js
     console.log(`*****************京东账号${$.index} ${$.nickName || $.UserName}东东工厂完成*******************\n`);
   } catch (e) {
     console.log("京东签到脚本执行异常:" + e);
@@ -189,7 +189,7 @@ function downloadUrl(url = 'https://raw.githubusercontent.com/whyour/hundun/mast
       try {
         if (err) {
           console.log(`${JSON.stringify(err)}`)
-          console.log(`检测到您不能访问外网,将使用CDN下载jd_factory.js文件`)
+          console.log(`检测到您不能访问外网,将使用CDN下载dd_factory.js文件`)
         } else {
           $.body = data;
         }
