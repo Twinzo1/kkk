@@ -32,10 +32,10 @@ async function downFile () {
   }
 }
 async function executeOneByOne() {
-    await requireConfig();
-    await downFile();
-    const content = await fs.readFileSync(JSPath, 'utf8')
     for (var i = 0; i < CookieJDs.length; i++) {
+        await requireConfig();
+        await downFile();
+        let content = await fs.readFileSync(JSPath, 'utf8')
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
