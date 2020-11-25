@@ -2,6 +2,10 @@ const exec = require("child_process").execSync;
 const fs = require("fs");
 const axios = require("axios");
 const smartReplace = require("./smartReplace");
+const download = require('download');
+let resultPath = "./result.txt";
+let JSPath = "./temp.js";
+let outPutUrl = './';
 
 // 公共变量
 const Secrets = {
@@ -14,19 +18,24 @@ const Secrets = {
 };
 let CookieJDs = [];
 
-async function downFile() {
-    let response = await axios.get(Secrets.SyncUrl);
-    let content = response.data;
-    await fs.writeFileSync("./temp.js", content, "utf8");
-}
-
 async function changeFiele(content, cookie) {
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
     await fs.writeFileSync("./execute.js", newContent, {flag:'w+', encoding:'utf8'});
 }
-
+async function downFile () {
+  let url = '';
+  await downloadUrl();
+  url = Secrets.SyncUrl;
+  try {
+    await download(url, outPutUrl);
+    console.log('文件下载完毕');
+  } catch (e) {
+    console.log("文件下载异常:" + e);
+  }
+}
 async function executeOneByOne() {
-    const content = await fs.readFileSync("./temp.js", "utf8");
+    await downFile();
+    const content = await fs.readFileSync(JSPath, 'utf8')
     for (var i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         await changeFiele(content, CookieJDs[i]);
@@ -39,7 +48,24 @@ async function executeOneByOne() {
         console.log("执行完毕");
     }
 }
-
+function downloadUrl(url = Secrets.SyncUrl) {
+  return new Promise(resolve => {
+    $.get({url}, async (err, resp, data) => {
+      try {
+        if (err) {
+          console.log(`${JSON.stringify(err)}`)
+          console.log(`检测到您不能访问外网,将使用CDN下载JD_DailyBonus.js文件`)
+        } else {
+          $.body = data;
+        }
+      } catch (e) {
+        $.logErr(e, resp)
+      } finally {
+        resolve();
+      }
+    })
+  })
+}
 async function start() {
     console.log(`当前执行时间:${new Date().toString()}`);
     if (!Secrets.JD_COOKIE) {
