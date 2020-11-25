@@ -23,13 +23,8 @@ async function changeFiele(content, cookie) {
     await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
 async function downFile () {
-  url = Secrets.SyncUrl;
-  try {
-    await download(url, outPutUrl);
-    console.log('文件下载完毕');
-  } catch (e) {
-    console.log("文件下载异常:" + e);
-  }
+  let response = await axios.get(Secrets.SyncUrl);
+  let content = response.data;
   await fs.writeFileSync(JSPath, content, "utf8");
 }
 async function executeOneByOne() {
