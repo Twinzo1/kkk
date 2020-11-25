@@ -20,7 +20,7 @@ let CookieJDs = [];
 
 async function changeFiele(content, cookie) {
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets, cookie);
-    await fs.writeFileSync("./execute.js", newContent, {flag:'w+', encoding:'utf8'});
+    await fs.writeFileSync("./execute.js", newContent, "utf8"});
 }
 async function downFile () {
   url = Secrets.SyncUrl;
@@ -32,6 +32,7 @@ async function downFile () {
   }
 }
 async function executeOneByOne() {
+    await requireConfig();
     await downFile();
     const content = await fs.readFileSync(JSPath, 'utf8')
     for (var i = 0; i < CookieJDs.length; i++) {
@@ -43,8 +44,22 @@ async function executeOneByOne() {
         } catch (e) {
             console.log("执行异常:" + e);
         }
+        console.log('运行完成后，删除下载的文件\n')
+        await deleteFile(resultPath);//删除result.txt
+        await deleteFile(JSPath);//删除JD_DailyBonus.js
         console.log("执行完毕");
     }
+}
+function requireConfig() {
+  return new Promise(resolve => {
+    const file = 'temp.js';
+    fs.access(file, fs.constants.W_OK, (err) => {
+      resultPath = err ? '/tmp/result.txt' : resultPath;
+      JD_DailyBonusPath = err ? '/tmp/temp.js' : JSPath;
+      outPutUrl = err ? '/tmp/' : outPutUrl;
+      resolve()
+    });
+  })
 }
 async function start() {
     console.log(`当前执行时间:${new Date().toString()}`);
