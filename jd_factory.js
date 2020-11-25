@@ -1,5 +1,5 @@
 /*
-东东工厂,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js
+东东工厂,自用,可N个京东账号,IOS软件用户请使用 https://raw.githubusercontent.com/whyour/hundun/master/quanx/dd_factory.js
 Node.JS专用
 更新时间：2020-11-09
 从 github @Twinzo1改写而来
@@ -109,7 +109,7 @@ async function downFile () {
   // }
   await downloadUrl();
   if ($.body) {
-    url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js';
+    url = 'https://raw.githubusercontent.com/whyour/hundun/master/quanx/dd_factory.js';
   // } else {
   //  url = 'https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js';
   }
@@ -183,7 +183,7 @@ function TotalBean() {
     })
   })
 }
-function downloadUrl(url = 'https://raw.githubusercontent.com/799953468/Quantumult-X/master/Scripts/JD/jd_factory.js') {
+function downloadUrl(url = 'https://raw.githubusercontent.com/whyour/hundun/master/quanx/dd_factory.js') {
   return new Promise(resolve => {
     $.get({url}, async (err, resp, data) => {
       try {
