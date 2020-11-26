@@ -21,10 +21,15 @@ def readSecret(key):
         return None
 
 cookies = readSecret("JD_COOKIE")
-cookiesLists_list = cookies.split('&')
-cookiesLists_str=','.join([id.strip() for id in cookiesLists_list if id])
-cookiesLists = dict((id.split('=') for id in cookiesLists_str.split(',')))
-
+cookies_list = cookies.split('&')
+cookiesLists=[]
+cookies_list=[id.strip() for id in cookies_list if id]
+for cookie in cookies_list:
+    cookie_list = cookie.split(";")
+    cookies_str=','.join([id.strip() for id in cookie_list if id])
+    cookies_dic = dict((id.split('=') for id in cookies_str.split(',')))
+    cookiesLists.append(cookies_dic)
+    
 def valid(cookies):
     headers = {
         'Host': 'api.m.jd.com',
