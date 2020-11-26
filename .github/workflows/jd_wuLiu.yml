@@ -39,4 +39,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE }}
-                  SYNCURL: https://raw.githubusercontent.com/dompling/Scriptable/master/Scripts/JDWuLiu.js
+                  SYNCURL: https://raw.githubusercontent.com/id77/QuantumultX/master/task/jdWuLiu.js
