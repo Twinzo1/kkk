@@ -1,7 +1,10 @@
 import requests
 import json
 import time
-
+import os
+import re
+from datetime import datetime
+from dateutil import tz
 """
 1、抓包，登录 https://bean.m.jd.com 点击签到并且出现签到日历后
 2、返回抓包，搜索关键词 functionId=signBean 复制Cookie中的pt_key与pt_pin填入以下两个空白处
