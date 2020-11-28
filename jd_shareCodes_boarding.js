@@ -10,14 +10,14 @@ const { shareCodes } = require('./ShareCode')
 
 const shareCodeMap = {
   bean: shareCodes.map(it => it.plantBean),
-//  farm: shareCodes.map(it => it.fruits),
-//  pet: shareCodes.map(it => it.pet)
+  farm: shareCodes.map(it => it.fruits),
+  pet: shareCodes.map(it => it.pet)
 }
 
 const SHARE_CODE_DESC = {
   'bean': '种豆得豆',
-//  'farm': '东东农场',
-//  'pet': '东东萌宠'
+  'farm': '东东农场',
+  'pet': '东东萌宠'
 }
 
 const taskurl = (url) => {
