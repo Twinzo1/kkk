@@ -35,9 +35,9 @@ const shareCodes = [
   new ShareCode('zjd_smj', '12f465d77ecf472aad1d1bb2e5222a98', 'MTE1NDAxNzYwMDAwMDAwMzU2MjA3NDU=', '7yl36dz5bllgvdh6hl5wm5dnpm'),
   new ShareCode('mom', 'd57715ac11754598b1f9c5f6b338ce32', 'MTE1NDQ5OTUwMDAwMDAwMzU3NTA2ODM=', '7oivz2mjbmnx4rrbzsohjhlh7u2tqs6aiczw5wi'),
   new ShareCode('zlm_mj', 'e72776d09bd4486c9b66fbd026da9de1', 'MTE1NDQ5OTUwMDAwMDAwMzYxNjE4Njk=', 'mlrdw3aw26j3wcc4ffutd4lwtcclbeq5m2e3oja'),
-  new ShareCode('zjn_nj', '3cb84ada5543426a9e43174702e60e1e', 'MTE1NDQ5MzYwMDAwMDAwMzYxNzg5MzU=', 'xyymddxmc3bvyic5w4vf2zc6s4'),
-  new ShareCode('zzs01_sp', '92b52ddf32ab43518385ed91af85df67', 'MTE1NDQ5MzYwMDAwMDAwMzY4NzEzNDk=', 'rtsljotwy2w355db24a6xczcpk7diaxabfbjnti'),
-  new ShareCode('mom_sp', 'a456328f53274168a5a848ebb55923d6', 'MTE1NDAxNzYwMDAwMDAwMzY5MDQ2MzU=', 'l4ex6vx6yynoufeuqqdireyxbs7rlfvccq23vwi')
+  new ShareCode('zjn_nj', '3cb84ada5543426a9e43174702e60e1e', 'MTE1NDQ5MzYwMDAwMDAwMzYxNzg5MzU=', 'xyymddxmc3bvyic5w4vf2zc6s4')
+  //new ShareCode('zzs01_sp', '92b52ddf32ab43518385ed91af85df67', 'MTE1NDQ5MzYwMDAwMDAwMzY4NzEzNDk=', 'rtsljotwy2w355db24a6xczcpk7diaxabfbjnti'),
+  //new ShareCode('mom_sp', 'a456328f53274168a5a848ebb55923d6', 'MTE1NDAxNzYwMDAwMDAwMzY5MDQ2MzU=', 'l4ex6vx6yynoufeuqqdireyxbs7rlfvccq23vwi')
 ]
 
 module.exports = {
