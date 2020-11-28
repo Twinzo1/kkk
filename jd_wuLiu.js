@@ -227,12 +227,12 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
 
     k === 0 && console.log('====================================');
     k === 0 && console.log(`🙆🏻‍♂️账号：${userInfo.baseInfo.nickname}`);
-    console.log($.subt);
-    console.log($.desc);
-    console.log($.state);
-    console.log($.info);
+  //  console.log($.subt);
+   // console.log($.desc);
+  //  console.log($.state);
+   // console.log($.info);
     console.log('------------------------------------');
-    await notify.sendNotify(`${$.name} - 账号${$.index}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
+    await notify.sendNotify(`${$.name}\n账号${${userInfo.baseInfo.nickname}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
 
     // 已通知过的快递，跳过通知
     if ($.carriageIdArr.includes(carriageId)) {
