@@ -6,7 +6,7 @@ name: 京东随机助力上车
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0 1,10,20 * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
+    - cron: '0 0,1 1,10,20 * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
   watch:
     types: started
   repository_dispatch:
@@ -35,7 +35,7 @@ jobs:
           npm install
       - name: '运行 【京东随机助力上车】'
         run: |
-          npm run jd_shareCodes_boarding
+          node jd_shareCodes_boarding.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
