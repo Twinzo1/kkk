@@ -6,7 +6,7 @@ name: jd_sc_car
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 0,1 1,10,20 * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
+    - cron: '0 0,16 1,10,20 * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
   watch:
     types: started
   repository_dispatch:
@@ -43,4 +43,6 @@ jobs:
           JD_BEAN_SIGN_STOP_NOTIFY: ${{secrets.JD_BEAN_SIGN_STOP_NOTIFY}}
           JD_BEAN_SIGN_NOTIFY_SIMPLE: ${{secrets.JD_BEAN_SIGN_NOTIFY_SIMPLE}}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
+          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           TG_USER_ID: ${{ secrets.TG_USER_ID }}
