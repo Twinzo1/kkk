@@ -2,7 +2,6 @@
  * 京东多账号-物流派件提醒
  * 派送状态会跑一次，通知一次
  * 超过30天的订单，不通知不显示
- * 由Twinzo1改写自https://github.com/id77/QuantumultX/blob/master/task/jdWuLiu.js
  *
  *
  * > 同时支持使用 NobyDa 与 domplin 脚本的京东 cookie
@@ -232,6 +231,7 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
     console.log($.state);
     console.log($.info);
     console.log('------------------------------------');
+    await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
 
     // 已通知过的快递，跳过通知
     if ($.carriageIdArr.includes(carriageId)) {
