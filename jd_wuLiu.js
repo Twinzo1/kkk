@@ -168,7 +168,7 @@ function getWuLiu(orderId) {
   });
 }
 
-async function showMsg(userInfo, wuLiuDetail, k, orderId) {
+function showMsg(userInfo, wuLiuDetail, k, orderId) {
   return new Promise((resolve) => {
     const {
       carrier,
@@ -240,7 +240,7 @@ async function showMsg(userInfo, wuLiuDetail, k, orderId) {
     }
 
     if (wuLiuStateCode === '0006' && $.isNode()) {
-      await notify.sendNotify(`${$.name}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
+      notify.sendNotify(`${$.name}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
     }
 
     // 缓存 0008 状态，只通知一次
