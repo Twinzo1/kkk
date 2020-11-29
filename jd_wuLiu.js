@@ -232,7 +232,6 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
   //  console.log($.state);
    // console.log($.info);
     console.log('------------------------------------');
-    await notify.sendNotify(`${$.name}\n账号${${userInfo.baseInfo.nickname}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
 
     // 已通知过的快递，跳过通知
     if ($.carriageIdArr.includes(carriageId)) {
@@ -241,6 +240,11 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
 
     if (wuLiuStateCode !== '0006' && wuLiuStateCode !== '0008') {
       return resolve();
+    }
+
+
+    if (wuLiuStateCode === '0006') {
+      await notify.sendNotify(`${$.name}\n账号${${userInfo.baseInfo.nickname}}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
     }
 
     // 缓存 0008 状态，只通知一次
