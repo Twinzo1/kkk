@@ -20,7 +20,7 @@
  *
  */
 const $ = new Env('京东物流');
-let cookiesArr = [], cookie = '', notify;
+let cookiesArr = [], cookie = '';
 const notify = $.isNode() ? require('./sendNotify') : '';
 $.SESSION_KEY = 'id77_jdWulLiu';
 $.PAGE_MAX_KEY = 'id77_jdWulLiu_pageMax';
