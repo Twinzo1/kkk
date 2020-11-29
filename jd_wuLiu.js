@@ -57,11 +57,6 @@ function requireConfig() {
   })
 }
 
-const extraCookies = JSON.parse($.getData('CookiesJD') || '[]').map(
-  (item) => item.cookie
-);
-cookies = Array.from(new Set([...cookies, ...extraCookies]));
-
 const opts = {
   headers: {
     Accept: `*/*`,
