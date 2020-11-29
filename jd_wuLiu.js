@@ -21,6 +21,7 @@
  */
 const $ = new Env('京东物流');
 let cookiesArr = [], cookie = '', notify;
+const notify = $.isNode() ? require('./sendNotify') : '';
 $.SESSION_KEY = 'id77_jdWulLiu';
 $.PAGE_MAX_KEY = 'id77_jdWulLiu_pageMax';
 $.CARRIAGE_ID_ARR_KEY = 'id77_carriageIdArr';
