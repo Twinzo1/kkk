@@ -21,7 +21,7 @@
  */
 const $ = new Env('京东物流');
 let cookiesArr = [], cookie = '';
-const notify = $.isNode() ? require('./sendNotify') : '';
+const notify = require('./sendNotify');
 $.SESSION_KEY = 'id77_jdWulLiu';
 $.PAGE_MAX_KEY = 'id77_jdWulLiu_pageMax';
 $.CARRIAGE_ID_ARR_KEY = 'id77_carriageIdArr';
@@ -35,10 +35,6 @@ $.carriageIdArr[0] &&
   Array.isArray($.carriageIdArr[0]) &&
   $.carriageIdArr.splice(0, 1);
 	
-let cookies = [];
-cookies.push($.getData('CookieJD'));
-$.getData('CookieJD2') && cookies.push($.getData('CookieJD2'));
-
 function requireConfig() {
   return new Promise(resolve => {
     console.log('开始获取配置文件\n')
