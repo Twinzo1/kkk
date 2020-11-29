@@ -35,6 +35,11 @@ $.carriageIdArr[0] &&
   Array.isArray($.carriageIdArr[0]) &&
   $.carriageIdArr.splice(0, 1);
 	
+
+let cookies = [];
+cookies.push($.getData('CookieJD'));
+$.getData('CookieJD2') && cookies.push($.getData('CookieJD2'));
+
 function requireConfig() {
   return new Promise(resolve => {
     console.log('开始获取配置文件\n')
@@ -56,6 +61,11 @@ function requireConfig() {
     resolve()
   })
 }
+
+const extraCookies = JSON.parse($.getData('CookiesJD') || '[]').map(
+  (item) => item.cookie
+);
+cookies = Array.from(new Set([...cookies, ...extraCookies]));
 
 const opts = {
   headers: {
