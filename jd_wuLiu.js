@@ -244,7 +244,7 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
 
 
     if (wuLiuStateCode === '0006') {
-      await notify.sendNotify(`${$.name}\n账号${${userInfo.baseInfo.nickname}}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
+      await notify.sendNotify(`${$.name}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
     }
 
     // 缓存 0008 状态，只通知一次
