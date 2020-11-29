@@ -168,7 +168,7 @@ function getWuLiu(orderId) {
   });
 }
 
-function showMsg(userInfo, wuLiuDetail, k, orderId) {
+async function showMsg(userInfo, wuLiuDetail, k, orderId) {
   return new Promise((resolve) => {
     const {
       carrier,
