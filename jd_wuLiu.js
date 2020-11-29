@@ -21,7 +21,7 @@
  */
 const $ = new Env('京东物流');
 let cookiesArr = [], cookie = '';
-const notify = require('./sendNotify');
+const notify = $.isNode() ? require('./sendNotify') : '';
 $.SESSION_KEY = 'id77_jdWulLiu';
 $.PAGE_MAX_KEY = 'id77_jdWulLiu_pageMax';
 $.CARRIAGE_ID_ARR_KEY = 'id77_carriageIdArr';
@@ -239,7 +239,7 @@ function showMsg(userInfo, wuLiuDetail, k, orderId) {
       return resolve();
     }
 
-    if (wuLiuStateCode === '0006') {
+    if (wuLiuStateCode === '0006' && $.isNode()) {
       await notify.sendNotify(`${$.name}\n${$.subt}\n${$.desc}\n${$.state}\n${$.info}`);
     }
 
