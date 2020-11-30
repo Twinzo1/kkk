@@ -4,8 +4,8 @@
 name: jd_welfareHouse
 on:
   workflow_dispatch:
-  #schedule:
-   # - cron: '50 16 * * *'
+  schedule:
+    - cron: '50 16 * * *'
   watch:
     types: started
   repository_dispatch:
