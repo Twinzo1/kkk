@@ -39,4 +39,4 @@ jobs:
                   DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
                   DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
                   UNSUBSCRIBE: ${{ secrets.UNSUBSCRIBE }}
-                  SYNCURL: https://github.com/lxk0301/jd_scripts/pull/208/files#diff-3dd1064026d7e0fd6ef8e0aa72ff347f2a24cacc991b51e733c0a38132913101
+                  SYNCURL: https://github.com/shylocks/jd_scripts/blob/master/jd_welfareHouse.js
