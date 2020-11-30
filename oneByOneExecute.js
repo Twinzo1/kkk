@@ -31,6 +31,9 @@ async function executeOneByOne() {
     const content = await fs.readFileSync("./temp.js", "utf8");
     for (let i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
+        if(CookieJDs[i] === "") {
+            break;
+        }
         await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
        // let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
