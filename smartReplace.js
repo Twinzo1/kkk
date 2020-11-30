@@ -15,8 +15,8 @@ async function replaceWithSecrets(content, Secrets, ext) {
         }
     } else {
         if (Secrets.JD_COOKIE && content.indexOf("require('./jdCookie.js')") > 0) {
-            await download_jdcookie();
-            //replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
+            //await download_jdcookie();
+            replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
         await downloader(content);
         if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
