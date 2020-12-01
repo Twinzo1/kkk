@@ -135,7 +135,7 @@ async function bean() {
   }
 //console.log(resultDetail);
 for (var key in resultDetail) {
-  sDetail = sDetail + key+"："+resultDetail[key]+ " 🐶" + "\n";
+  sDetail = sDetail + key+"："+resultDetail[key]+ "京豆 🐶" + "\n";
 }
 sDetail = "======收入明细======\n" + sDetail + "======收入明细======"
   // console.log(`昨日收入：${$.incomeBean}个京豆 🐶`);
