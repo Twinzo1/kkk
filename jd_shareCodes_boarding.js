@@ -12,14 +12,16 @@ const shareCodeMap = {
   bean: shareCodes.map(it => it.plantBean),
   farm: shareCodes.map(it => it.fruits),
   pet: shareCodes.map(it => it.pet),
-  ddfactory:shareCodes.map(it => it.ddfactory)
+  ddfactory:shareCodes.map(it => it.ddfactory),
+  jxfactory:shareCodes.map(it => it.jxfactory)
 }
 
 const SHARE_CODE_DESC = {
   'bean': '种豆得豆',
   'farm': '东东农场',
   'pet': '东东萌宠',
-   'ddfactory': '东东工厂'
+  'ddfactory': '东东工厂',
+  'jxfactory': '京喜工厂'
 }
 
 const taskurl = (url) => {
