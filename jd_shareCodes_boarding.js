@@ -55,11 +55,11 @@ const boarding = (shareCode, type) => {
       try {
         data = JSON.parse(data)
         if (data.code === 200) {
-          const msg = `助力码[${shareCode}]上车成功，上车时间：${moment().format('yyyy-MM-DD HH:mm:ss')}`
+          const msg = `助力码👬[${shareCode}]上车成功，上车时间：${moment().format('yyyy-MM-DD HH:mm:ss')} 🐶`
           $.msg(msg)
           message += `${msg}\n`
         } else {
-          const msg = `助力码[${shareCode}]上车失败，原因：${data.message}`
+          const msg = `助力码👬[${shareCode}]上车失败，原因：${data.message} ⚠️`
           message += `${msg}\n`
           $.msg(msg)
         }
@@ -83,7 +83,7 @@ let message = ''
     const shareCodes = shareCodeMap[type]
     if (shareCodes) {
       $.msg(`您提供了[${taskName}]的${shareCodes.length}个助力码，开始上车`)
-      title = `${taskName} - \n`
+      title = `${taskName}🌟 - \n`
       message = ''
       for (let j = 0; j < shareCodes.length; j++) {
         const shareCode = shareCodes[j]
