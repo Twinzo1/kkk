@@ -42,4 +42,4 @@ jobs:
                   FRUITSHARECODES: ${{ secrets.FRUITSHARECODES }}
                   FRUIT_BEAN_CARD: ${{ secrets.FRUIT_BEAN_CARD }}
                   FRUIT_NOTIFY_CONTROL: ${{ secrets.FRUIT_NOTIFY_CONTROL }}
-                  SYNCURL: https://raw.githubusercontent.com/shylocks/jd_scripts/master/jd_welfareHouse.js
+                  SYNCURL: https://raw.githubusercontent.com/shylocks/jd_scripts/master/jd_jxstory.js
