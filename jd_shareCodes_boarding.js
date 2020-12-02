@@ -104,7 +104,8 @@ let message = ''
         setTimeout(__ => __, TIMEOUT)
       }
       var if_msg = message.replace(/\s*/g,"").length
-      if (if_msg != 0){
+      if (if_msg != 0){ 
+        //在车上就不发信息了
         await notify.sendNotify(title, message)
       }
     }
