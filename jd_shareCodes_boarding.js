@@ -62,7 +62,12 @@ const boarding = (shareCode, type) => {
           $.msg(msg)
           message += `${msg}\n`
         } else {
-          const msg = `助力码👬[${shareCode}]上车失败，原因：${data.message} ⚠️`
+          if (${data.message}.search("share code existed") != -1) {
+            const msg = `助力码👬[${shareCode}]已上车 🎉`
+          }
+          else {
+            const msg = `助力码👬[${shareCode}]上车失败，原因：${data.message} ⚠️`
+          }
           message += `${msg}\n`
           $.msg(msg)
         }
