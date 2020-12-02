@@ -62,7 +62,7 @@ const boarding = (shareCode, type) => {
           $.msg(msg)
           message += `${msg}\n`
         } else {
-          if (${data.message}.search("share code existed") != -1) {
+          if (`${data.message}`.search("share code existed") != -1) {
             const msg = `助力码👬[${shareCode}]已上车 🎉`
           }
           else {
