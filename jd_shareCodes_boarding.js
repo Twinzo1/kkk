@@ -44,6 +44,9 @@ const taskurl = (url) => {
  * @return {Promise<void>}
  */
 const boarding = (shareCode, type) => {
+  if (shareCode == '') {
+    return
+  }
   const url = BASE_BOARDING_URL
     .replace('@type', type)
     .replace('@shareCode', shareCode)
