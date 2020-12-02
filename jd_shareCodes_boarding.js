@@ -63,7 +63,8 @@ const boarding = (shareCode, type) => {
           message += `${msg}\n`
         } else {
           if (`${data.message}`.search("share code existed") != -1) {
-            const msg = `助力码👬[${shareCode}]已上车 🎉`
+            const msg = ""
+            console.log(`助力码👬[${shareCode}]已上车 🎉`)
             message += `${msg}\n`
             $.msg(msg)
           }
@@ -102,7 +103,10 @@ let message = ''
         // 延时2s
         setTimeout(__ => __, TIMEOUT)
       }
-      await notify.sendNotify(title, message)
+      var if_msg = message.replace(/\s*/g,"").length
+      if (if_msg != 0){
+        await notify.sendNotify(title, message)
+      }
     }
   }
 })()
