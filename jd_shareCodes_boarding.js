@@ -64,12 +64,14 @@ const boarding = (shareCode, type) => {
         } else {
           if (`${data.message}`.search("share code existed") != -1) {
             const msg = `助力码👬[${shareCode}]已上车 🎉`
+            message += `${msg}\n`
+            $.msg(msg)
           }
           else {
             const msg = `助力码👬[${shareCode}]上车失败，原因：${data.message} ⚠️`
+            message += `${msg}\n`
+            $.msg(msg)
           }
-          message += `${msg}\n`
-          $.msg(msg)
         }
       } catch (e) {
         $.logErr(e, resp)
