@@ -80,7 +80,18 @@ if ($.isNode()) {
 async function showMsg() {
   if ($.errorMsg) return
   if ($.isNode()) {
-    await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶\n${sDetail}`)
+    var tm1 = parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000;
+    var timestamp = Date.parse(new Date());
+    total=(timestamp-tm1)/1000
+    var day = parseInt(total / (24*60*60));//计算整数天数
+    var afterDay = total - day*24*60*60;//取得算出天数后剩余的秒数
+    var hour = parseInt(afterDay/(60*60));//计算整数小时数
+    if (hour >= 10) {
+      await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶`)
+    }
+    else {
+      await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶\n${sDetail}`)
+    }
   }
   $.msg($.name, '', `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶\n${sDetail}`, { "open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean" });
 }
