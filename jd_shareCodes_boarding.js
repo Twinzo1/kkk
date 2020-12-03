@@ -12,9 +12,9 @@ const shareCodeMap = {
   bean: shareCodes.map(it => it.plantBean),
   farm: shareCodes.map(it => it.fruits),
   pet: shareCodes.map(it => it.pet),
-  ddfactory:shareCodes.map(it => it.ddfactory),
-  jxfactory:shareCodes.map(it => it.jxfactory),
-  jxstory:shareCodes.map(it => it.jxstory)
+  ddfactory: shareCodes.map(it => it.ddfactory),
+  jxfactory: shareCodes.map(it => it.jxfactory),
+  jxstory: shareCodes.map(it => it.jxstory)
 }
 
 const SHARE_CODE_DESC = {
