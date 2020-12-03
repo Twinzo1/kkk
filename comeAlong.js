@@ -32,16 +32,8 @@ async function downFile() {
     await fs.writeFileSync("./temp.js", content, "utf8");
 }
 
-async function changeFiele(content) {
-    Secrets.JD_COOKIE = CookieJDs[i]
-    Secrets.FruitShareCodes = process.env.FruitShareCodes
-    Secrets.PETSHARECODES = process.env.PETSHARECODES
-    Secrets.PLANT_BEAN_SHARECODES = process.env.PLANT_BEAN_SHARECODES
-    Secrets.SUPERMARKET_SHARECODES = process.env.SUPERMARKET_SHARECODES
-    Secrets.DDFACTORY_SHARECODES = process.env.DDFACTORY_SHARECODES
-    Secrets.DREAM_FACTORY_SHARE_CODES = process.env.DREAM_FACTORY_SHARE_CODES
-    Secrets.JXSTORY_SHARECODES = process.env.JXSTORY_SHARECODES
-    
+async function changeFiele(content, cookie) {
+    Secrets.JD_COOKIE = cookie
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets);
     await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
@@ -53,10 +45,17 @@ async function executeOneByOne() {
         if(CookieJDs[i] === "") {
             break;
         }
-        await changeFiele(content);
+        await changeFiele(content, CookieJDs[i]);
         console.log("替换变量完毕");
+       // let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
         try {
-            await exec("node execute.js", { stdio: "inherit" });
+            if (i < CookieJDs.length - 1) {
+               await exec("node execute.js &", { stdio: "inherit" });
+            }
+            else
+            {
+                await exec("node execute.js", { stdio: "inherit" });
+            }
         } catch (e) {
             console.log("执行异常:" + e);
         }
@@ -75,13 +74,6 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
-    JFJDS = Secrets.FruitShareCodes.split("&");
-    JPJDS = Secrets.PETSHARECODES.split("&");
-    JBJDS = Secrets.PLANT_BEAN_SHARECODES.split("&");
-    JSJDS = Secrets.SUPERMARKET_SHARECODES.split("&");
-    JDFJDS = Secrets.DDFACTORY_SHARECODES.split("&");
-    JXFJDS = Secrets.DREAM_FACTORY_SHARE_CODES.split("&");
-    JXSJDS = Secrets.JXSTORY_SHARECODES.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
