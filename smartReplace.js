@@ -18,6 +18,10 @@ async function replaceWithSecrets(content, Secrets, ext) {
             //await download_jdcookie();
             replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
+        if (Secrets.JXSTORY_SHARECODES != undefined && content.indexOf("require('./jdJxStoryShareCodes.js.js')") > 0) {
+            //await download_jdcookie();
+            replacements.push({ key: "require('./jdJxStoryShareCodes.js.js')", value: JSON.stringify(Secrets.JXSTORY_SHARECODES.split("&")) });
+        }
         await downloader(content);
         if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
             let coinToBeanCount = parseInt(Secrets.MarketCoinToBeanCount);
@@ -167,7 +171,12 @@ async function download_jdDreamFactory(content) {
     await fs.writeFileSync("./jdDreamFactoryShareCodes.js", fcontent, "utf8");
     console.log("下载京喜工厂互助码代码完毕");
 }
-
+async function download_jdJxStoryShareCodes() {
+    let response = await axios.get("https://github.com/lxk0301/jd_scripts/raw/master/jdJxStoryShareCodes.js.js");
+    let fcontent = response.data;
+    await fs.writeFileSync("./jdJxStoryShareCodes.js", fcontent, "utf8");
+    console.log("下载京东京喜故事互助码代码完毕");
+}
 module.exports = {
     replaceWithSecrets,
 };
