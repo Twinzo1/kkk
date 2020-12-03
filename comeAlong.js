@@ -25,7 +25,13 @@ const Secrets = {
 };
 
 let CookieJDs = [];
-
+let JFJDS = [];
+let JPJDS = [];
+let JBJDS = [];
+let JSJDS = [];
+let JDFJDS = [];
+let JXFJDS = [];
+let JXSJDS = [];
 async function downFile() {
     let response = await axios.get(Secrets.SyncUrl);
     let content = response.data;
