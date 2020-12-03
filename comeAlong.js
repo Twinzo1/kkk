@@ -40,7 +40,7 @@ async function changeFiele(content, cookie, num) {
 
 async function executeOneByOne() {
     const content = await fs.readFileSync("./temp.js", "utf8");
-    for (let i = 0; i < CookieJDs.length; i++) {
+    for (let i = 0; i < CookieJDs.length - 1; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         if(CookieJDs[i] === "") {
             break;
@@ -55,6 +55,8 @@ async function executeOneByOne() {
         }
         console.log("执行完毕");
     }
+    await changeFiele(content, CookieJDs[CookieJDs.length-1], "");
+    await exec("node execute.js", { stdio: "inherit" });
 }
 
 async function start() {
