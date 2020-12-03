@@ -38,7 +38,7 @@ async function executeOneByOne() {
         console.log("替换变量完毕");
        // let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
         try {
-            await exec("node execute.js", { stdio: "inherit" });
+            await exec("node execute.js &", { stdio: "inherit" });
         } catch (e) {
             console.log("执行异常:" + e);
         }
