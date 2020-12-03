@@ -83,13 +83,13 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
-    JFJDS = Secrets.FruitShareCodes.split("&");
-    JPJDS = Secrets.PETSHARECODES.split("&");
-    JBJDS = Secrets.PLANT_BEAN_SHARECODES.split("&");
-    JSJDS = Secrets.SUPERMARKET_SHARECODES.split("&");
-    JDFJDS = Secrets.DDFACTORY_SHARECODES.split("&");
-    JXFJDS = Secrets.DREAM_FACTORY_SHARE_CODES.split("&");
-    JXSJDS = Secrets.JXSTORY_SHARECODES.split("&");
+    if (Secrets.FruitShareCodes) {JFJDS = Secrets.FruitShareCodes.split("&");}
+    if (Secrets.PETSHARECODES) {JPJDS = Secrets.PETSHARECODES.split("&");}
+    if (Secrets.PLANT_BEAN_SHARECODES) {JBJDS = Secrets.PLANT_BEAN_SHARECODES.split("&");}
+    if (Secrets.SUPERMARKET_SHARECODES) {JSJDS = Secrets.SUPERMARKET_SHARECODES.split("&");}
+    if (Secrets.DDFACTORY_SHARECODES) {JDFJDS = Secrets.DDFACTORY_SHARECODES.split("&");}
+    if (Secrets.DREAM_FACTORY_SHARE_CODES) {JXFJDS = Secrets.DREAM_FACTORY_SHARE_CODES.split("&");}
+    if (Secrets.JXSTORY_SHARECODES) {JXSJDS = Secrets.JXSTORY_SHARECODES.split("&");}
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
