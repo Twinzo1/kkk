@@ -32,8 +32,8 @@ async function downFile() {
     await fs.writeFileSync("./temp.js", content, "utf8");
 }
 
-async function changeFiele(content, cookie) {
-    Secrets.JD_COOKIE = cookie
+async function changeFiele(content) {
+    Secrets.JD_COOKIE = CookieJDs[i]
     Secrets.FruitShareCodes = process.env.FruitShareCodes
     Secrets.PETSHARECODES = process.env.PETSHARECODES
     Secrets.PLANT_BEAN_SHARECODES = process.env.PLANT_BEAN_SHARECODES
@@ -53,7 +53,7 @@ async function executeOneByOne() {
         if(CookieJDs[i] === "") {
             break;
         }
-        await changeFiele(content, CookieJDs[i]);
+        await changeFiele(content);
         console.log("替换变量完毕");
         try {
             await exec("node execute.js", { stdio: "inherit" });
@@ -75,6 +75,13 @@ async function start() {
         return;
     }
     CookieJDs = Secrets.JD_COOKIE.split("&");
+    JFJDS = Secrets.FruitShareCodes.split("&");
+    JPJDS = Secrets.PETSHARECODES.split("&");
+    JBJDS = Secrets.PLANT_BEAN_SHARECODES.split("&");
+    JSJDS = Secrets.SUPERMARKET_SHARECODES.split("&");
+    JDFJDS = Secrets.DDFACTORY_SHARECODES.split("&");
+    JXFJDS = Secrets.DREAM_FACTORY_SHARE_CODES.split("&");
+    JXSJDS = Secrets.JXSTORY_SHARECODES.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
     await downFile();
