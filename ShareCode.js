@@ -1,6 +1,6 @@
 // 助力码辅助生成
 class ShareCode {
-  constructor(username, fruits, pet, plantBean, ddfactory, jxfactory) {
+  constructor(username, fruits, pet, plantBean, ddfactory, jxfactory, jxstory) {
     this._username = username
     // 东东农场互助码
     this._fruits = fruits
@@ -12,6 +12,8 @@ class ShareCode {
     this._ddfactory = ddfactory
     // 京喜工厂互助码
     this._jxfactory = jxfactory
+    // 京喜故事互助码
+    this._jxstory = jxstory
   }
 
   get username() {
@@ -36,6 +38,10 @@ class ShareCode {
   
   get jxfactory() {
     return this._jxfactory
+  }
+  
+  get jxstory() {
+    return this._jxstory
   }
 }
 
