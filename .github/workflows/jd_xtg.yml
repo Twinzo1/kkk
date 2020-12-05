@@ -5,8 +5,8 @@ name: jd_xtg
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: '0 16 * * *' #北京时间0点运行，action会有延迟
+  schedule:
+    - cron: '40,45,50,53,55,58 15 * * *' #北京时间0点运行，action会有延迟
 #  watch:
 #    types: started
   repository_dispatch:
@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【星推官脚本】'
         run: |
-          node jd_xtg.js
+          node comeAlong.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -49,3 +49,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_xtg.js
