@@ -118,12 +118,10 @@ async function start() {
     	waiting_time = startTime()
     }
 
-	return
     if (waiting_time <= 300000) {
         console.log("检测到离零点只有不到五分钟，脚本将等待" + waiting_time / 1000 + "s，到零点再执行");
         sleep(waiting_time);
-    }
-    else {
+    } else {
 	console.log("星推官等待时间过长，退出");
         return
     }
