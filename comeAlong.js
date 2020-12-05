@@ -123,6 +123,7 @@ async function start() {
         sleep(waiting_time);
     }
     else {
+	console.log("星推官等待时间过长，退出");
         return
     }
     
