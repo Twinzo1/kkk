@@ -114,7 +114,7 @@ async function start() {
 	    while (new Date().getTime() < start + delay);
     }
     let waiting_time = 0;
-    if (Secrets.SyncUrl.search("share code existed") != -1) {	
+    if (Secrets.SyncUrl.search("j_xtg") != -1) {	
     	waiting_time = startTime()
     }
     
