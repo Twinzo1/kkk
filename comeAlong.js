@@ -114,13 +114,9 @@ async function start() {
 	    while (new Date().getTime() < start + delay);
     }
     let waiting_time = 0;
-    if (Secrets.SyncUrl.search("j_xtg") != -1) {
-    	console.log(Secrets.SyncUrl)
+    if (`${Secrets.SyncUrl}`.search("j_xtg") == -1) {
     	waiting_time = startTime()
     }
-    	console.log(Secrets.SyncUrl)
-console.log(Secrets.SyncUrl.search("j_xtg"))
-console.log(`${Secrets.SyncUrl}`.search("j_xtg"))
 
 	return
     if (waiting_time <= 300000) {
