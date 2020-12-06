@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【东东农场】'
         run: |
-          node jd_fruit.js
+          node comeAlong.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -52,3 +52,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_fruit.js
