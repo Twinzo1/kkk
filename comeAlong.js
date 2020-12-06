@@ -117,7 +117,9 @@ async function start() {
     if (`${Secrets.SyncUrl}`.search("jd_xtg") == -1) {
     	waiting_time = startTime()
     }
-
+	console.log(Secrets.SyncUrl)
+console.log(`${Secrets.SyncUrl}`.search("jd_xtg"))
+	return
     if (waiting_time <= 300000) {
         console.log("检测到离零点只有不到五分钟，脚本将等待" + waiting_time / 1000 + "s，到零点再执行");
         sleep(waiting_time);
