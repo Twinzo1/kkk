@@ -13,8 +13,10 @@ const Secrets = {
     TG_USER_ID: process.env.TG_USER_ID, //TGBot推送成员ID
     DD_BOT_TOKEN: process.env.DD_BOT_TOKEN, //钉钉推送Token
     DD_BOT_SECRET: process.env.DD_BOT_SECRET, //钉钉推送SECRET
+    JDSPLIT_SHARECODES: process.env.JDSPLIT_SHARECODES, //京喜助力码
 };
 
+let JSPJDS = [];
 let CookieJDs = [];
 
 async function downFile() {
@@ -23,8 +25,9 @@ async function downFile() {
     await fs.writeFileSync("./temp.js", content, "utf8");
 }
 
-async function changeFiele(content, cookie) {
+async function changeFiele(content, cookie, num) {
     Secrets.JD_COOKIE = cookie
+    Secrets.JDSPLIT_SHARECODES = JSPJDS[num];
     let newContent = await smartReplace.replaceWithSecrets(content, Secrets);
     await fs.writeFileSync("./execute.js", newContent, "utf8");
 }
@@ -36,7 +39,12 @@ async function executeOneByOne() {
         if(CookieJDs[i] === "") {
             break;
         }
-        await changeFiele(content, CookieJDs[i]);
+        if(`${Secrets.SyncUrl}`.search("jd_necklace") != -1 || `${Secrets.SyncUrl}`.search("jd_split") != -1) {
+            if (CookieJDs[i].search("jd_kTJdbwJYjMWJ") != -1){
+                break;
+            }
+        }
+        await changeFiele(content, CookieJDs[i], i);
         console.log("替换变量完毕");
        // let newContent = await smartReplace.replaceWithSecrets(content, Secrets, `JD_COOKIE: ${CookieJDs[i]}`);
         try {
@@ -58,6 +66,7 @@ async function start() {
         console.log("请填写 SYNCURL 后在继续");
         return;
     }
+    if (Secrets.JDSPLIT_SHARECODES) {JSPJDS = Secrets.JDSPLIT_SHARECODES.split("&");}
     CookieJDs = Secrets.JD_COOKIE.split("&");
     console.log(`当前共${CookieJDs.length}个账号需要签到`);
     // 下载最新代码
