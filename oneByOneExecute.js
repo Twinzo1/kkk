@@ -37,11 +37,11 @@ async function executeOneByOne() {
     for (let i = 0; i < CookieJDs.length; i++) {
         console.log(`正在执行第${i + 1}个账号签到任务`);
         if(CookieJDs[i] === "") {
-            break;
+            continue;
         }
         if(`${Secrets.SyncUrl}`.search("jd_necklace") != -1 || `${Secrets.SyncUrl}`.search("jd_split") != -1) {
             if (CookieJDs[i].search("jd_kTJdbwJYjMWJ") != -1){
-                break;
+                continue;
             }
         }
         await changeFiele(content, CookieJDs[i], i);
