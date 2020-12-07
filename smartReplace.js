@@ -18,9 +18,13 @@ async function replaceWithSecrets(content, Secrets, ext) {
             //await download_jdcookie();
             replacements.push({ key: "require('./jdCookie.js')", value: JSON.stringify(Secrets.JD_COOKIE.split("&")) });
         }
-        if (Secrets.JXSTORY_SHARECODES != undefined && content.indexOf("require('./jdJxStoryShareCodes.js.js')") > 0) {
+        if (Secrets.JXSTORY_SHARECODES != undefined && content.indexOf("require('./jdJxStoryShareCodes.js')") > 0) {
             //await download_jdcookie();
-            replacements.push({ key: "require('./jdJxStoryShareCodes.js.js')", value: JSON.stringify(Secrets.JXSTORY_SHARECODES.split("&")) });
+            replacements.push({ key: "require('./jdJxStoryShareCodes.js')", value: JSON.stringify(Secrets.JXSTORY_SHARECODES.split("&")) });
+        }
+        if (Secrets.JDSPLIT_SHARECODES != undefined && content.indexOf("require('./jdSplitShareCodes.js')") > 0) {
+            //await download_jdcookie();
+            replacements.push({ key: "require('./jdSplitShareCodes.js')", value: JSON.stringify(Secrets.JDSPLIT_SHARECODES.split("&")) });
         }
         await downloader(content);
         if (Secrets.MarketCoinToBeanCount && !isNaN(Secrets.MarketCoinToBeanCount)) {
@@ -176,6 +180,12 @@ async function download_jdJxStoryShareCodes() {
     let fcontent = response.data;
     await fs.writeFileSync("./jdJxStoryShareCodes.js", fcontent, "utf8");
     console.log("下载京东京喜故事互助码代码完毕");
+}
+async function download_jdSplit(content) {
+    let response = await axios.get("https://raw.githubusercontent.com/Twinzo1/kkk/main/jdSplitShareCodes.js");
+    let fcontent = response.data;
+    await fs.writeFileSync("./jdSplitShareCodes.js", fcontent, "utf8");
+    console.log("下载金榜年终奖分享码代码完毕");
 }
 module.exports = {
     replaceWithSecrets,
