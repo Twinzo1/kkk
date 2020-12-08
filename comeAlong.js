@@ -116,7 +116,7 @@ async function start() {
 	    while (new Date().getTime() < start + delay);
     }
     let waiting_time = 0;
-    if (`${Secrets.SyncUrl}`.search("jd_xtg") != -1 || `${Secrets.SyncUrl}`.search("jd_live_redrain") != -1) {
+    if (`${Secrets.SyncUrl}`.search("jd_xtg") != -1) {
     	waiting_time = startTime()
     }
 
