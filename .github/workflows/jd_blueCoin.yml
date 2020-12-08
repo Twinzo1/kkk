@@ -37,7 +37,7 @@ jobs:
           npm install
       - name: '运行 【京小超兑换奖品】'
         run: |
-          node jd_blueCoin.js
+          node oneByOneExecute.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -51,3 +51,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          syncurl: https://raw.githubusercontent.com/yangtingxiao/QuantumultX/master/scripts/jd/jd_example.js
