@@ -35,22 +35,6 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行【健康抽奖机】'
-        run: |
-          node oneByOneExecute.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          JD_DEBUG: ${{ secrets.JD_DEBUG }}
-          JOY_HELP_FEED: ${{ secrets.JOY_HELP_FEED }}
-          PUSH_KEY: ${{ secrets.PUSH_KEY }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
-          TG_USER_ID: ${{ secrets.TG_USER_ID }}
-          BARK_SOUND: ${{ secrets.BARK_SOUND }}
-          DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
-          DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
-          IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_bean_home.js
       - name: '运行【参与领京豆】'
         run: |
           node oneByOneExecute.js
@@ -66,7 +50,7 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_health.js
+          SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_bean_home.js
       - name: '运行 【秒杀红包雨】'
         run: |
           node jd_ms_redrain.js
