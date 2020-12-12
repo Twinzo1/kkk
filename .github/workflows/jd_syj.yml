@@ -83,7 +83,7 @@ jobs:
           SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_ds.js
       - name: '运行【京东数码加购】'
         run: |
-          node jd_digital_floor.js
+          # node jd_digital_floor.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
