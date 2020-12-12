@@ -6,7 +6,7 @@ name: jr_sign
 on:
   workflow_dispatch:
   schedule:
-    - cron: '40 1 * * *'
+    - cron: '40 21 * * *'
   watch:
     types: started
   repository_dispatch:
