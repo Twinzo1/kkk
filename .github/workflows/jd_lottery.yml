@@ -53,7 +53,7 @@ jobs:
           SYNCURL: https://raw.githubusercontent.com/Twinzo1/kkk/main/jd_health.js
       - name: '运行【苹果抽奖机】'
         run: |
-          node jd_apple_live.js
+          node shortTerm/jd_apple_live.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
