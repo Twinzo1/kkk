@@ -50,9 +50,9 @@ const boarding = (shareCode, type) => {
   if (shareCode == '') {
     return
   }
-  const url = type != "jdzz" ? BASE_BOARDING_URL : BASE_BOARDING_URL1
-        .replace('@type', type)
-        .replace('@shareCode', shareCode)
+  const url1 = type != "jdzz" ? BASE_BOARDING_URL : BASE_BOARDING_URL1;
+  const url2 = url1.replace('@type', type);
+  const url = url2.replace('@shareCode', shareCode);
   return new Promise((resolve) => {
     $.get(taskurl(url), (err, resp, data) => {
       console.log(url)
