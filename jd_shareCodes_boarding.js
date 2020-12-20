@@ -14,7 +14,7 @@ const shareCodeMap = {
   pet: shareCodes.map(it => it.pet),
   ddfactory: shareCodes.map(it => it.ddfactory),
   jxfactory: shareCodes.map(it => it.jxfactory),
-  jxstory: shareCodes.map(it => it.jxstory)
+  jdzz: shareCodes.map(it => it.jdzz)
 }
 
 const SHARE_CODE_DESC = {
@@ -23,7 +23,7 @@ const SHARE_CODE_DESC = {
   'pet': '东东萌宠',
   'ddfactory': '东东工厂',
   'jxfactory': '京喜工厂',
-  'jxstory': '京喜故事'
+  'jdzz': '京东赚赚'
 }
 
 const taskurl = (url) => {
