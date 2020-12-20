@@ -6,7 +6,7 @@ name: jd_sc_car
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5,10 16,22 * * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
+    - cron: '5,35 16,22 * * *' # 12 o'clock in the evening on the 1st, 10th and 20th of each month
   watch:
     types: started
   repository_dispatch:
