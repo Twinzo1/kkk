@@ -54,6 +54,7 @@ const boarding = (shareCode, type) => {
     .replace('@shareCode', shareCode)
   return new Promise((resolve) => {
     $.get(taskurl(url), (err, resp, data) => {
+      console.log(url)
       if (err) {
         $.logErr(err, resp)
       }
