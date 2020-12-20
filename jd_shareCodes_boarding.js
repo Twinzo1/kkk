@@ -1,5 +1,6 @@
 // 京东助力码上车
 const BASE_BOARDING_URL = 'http://api.turinglabs.net/api/v1/jd/@type/create/@shareCode'
+const BASE_BOARDING_URL1 = 'https://code.chiang.fun/api/v1/jd/@type/create/@shareCode'
 const TIMEOUT = 2000
 const moment = require('moment')
 
@@ -49,7 +50,7 @@ const boarding = (shareCode, type) => {
   if (shareCode == '') {
     return
   }
-  const url = BASE_BOARDING_URL
+  const url = type != "jdzz" ? BASE_BOARDING_URL : BASE_BOARDING_URL1
     .replace('@type', type)
     .replace('@shareCode', shareCode)
   return new Promise((resolve) => {
