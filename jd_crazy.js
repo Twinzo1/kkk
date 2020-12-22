@@ -107,7 +107,7 @@ class CrazyJoy {
     return new Promise((resolve) => {
       const body = {
         paramData: {
-   //       inviter: 'DBwF_65db1jIoHqBDEMk8at9zd5YaBeE'
+          inviter: 'YOC2Ld8hDrOymlJcGj7BUat9zd5YaBeE'
         }
       }
       $.get(this.taskUrl('crazyJoy_user_gameState', body), async (err, resp, data) => {
@@ -139,7 +139,7 @@ class CrazyJoy {
   joyList() {
     const body = {
       paramData: {
-      //  inviter: 'DBwF_65db1jIoHqBDEMk8at9zd5YaBeE'
+        inviter: 'YOC2Ld8hDrOymlJcGj7BUat9zd5YaBeE'
       }
     }
     return new Promise((resolve) => {
