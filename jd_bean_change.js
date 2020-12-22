@@ -27,6 +27,7 @@ const jdCookieNode = $.isNode() ? require('./jdCookie.js') : '';
 
 //IOS等用户直接用NobyDa的jd cookie
 let cookiesArr = [], cookie = '';
+let sDetail ='';
 if ($.isNode()) {
   Object.keys(jdCookieNode).forEach((item) => {
     cookiesArr.push(jdCookieNode[item])
@@ -48,6 +49,7 @@ if ($.isNode()) {
   for (let i = 0; i < cookiesArr.length; i++) {
     if (cookiesArr[i]) {
       cookie = cookiesArr[i];
+      sDetail ='';
       $.UserName = decodeURIComponent(cookie.match(/pt_pin=(.+?);/) && cookie.match(/pt_pin=(.+?);/)[1])
       $.index = i + 1;
       $.beanCount = 0;
@@ -83,7 +85,18 @@ if ($.isNode()) {
 async function showMsg() {
   if ($.errorMsg) return
   if ($.isNode()) {
-    await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
+    var tm1 = parseInt((Date.now() + 28800000) / 86400000) * 86400000 - 28800000;
+    var timestamp = Date.parse(new Date());
+    total=(timestamp-tm1)/1000
+    var day = parseInt(total / (24*60*60));//计算整数天数
+    var afterDay = total - day*24*60*60;//取得算出天数后剩余的秒数
+    var hour = parseInt(afterDay/(60*60));//计算整数小时数
+    if (hour >= 10) {
+      await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}`, { url: `https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean` })
+    }
+    else {
+      await notify.sendNotify(`${$.name} - 账号${$.index} - ${$.nickName}`, `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message} 🐶\n${sDetail}`)
+    }
   }
   $.msg($.name, '', `账号${$.index}：${$.nickName || $.UserName}\n昨日收入：${$.incomeBean}京豆 🐶\n昨日支出：${$.expenseBean}京豆 🐶\n当前京豆：${$.beanCount}京豆 🐶${$.message}`, {"open-url": "https://bean.m.jd.com/beanDetail/index.action?resourceValue=bean"});
 }
@@ -121,13 +134,24 @@ async function bean() {
       }
     }
   } while (t === 0);
+  const resultDetail = new Array;
   for (let item of yesterdayArr) {
     if (Number(item.amount) > 0) {
+      if (resultDetail[item.eventMassage] != undefined) {
+          resultDetail[item.eventMassage] += Number(item.amount);
+      } else {
+          resultDetail[item.eventMassage] = Number(item.amount);
+      }
+      //console.log(item.eventMassage+":"+resultDetail[item.eventMassage]);
       $.incomeBean += Number(item.amount);
     } else if (Number(item.amount) < 0) {
       $.expenseBean += Number(item.amount);
     }
   }
+  for (var key in resultDetail) {
+    sDetail = sDetail + key+"："+resultDetail[key]+ "京豆 🐶" + "\n";
+  }
+  sDetail = "======收入明细======\n" + sDetail + "======收入明细======"
   await queryexpirejingdou();
   // console.log(`昨日收入：${$.incomeBean}个京豆 🐶`);
   // console.log(`昨日支出：${$.expenseBean}个京豆 🐶`)
