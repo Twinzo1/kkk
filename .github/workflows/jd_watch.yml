@@ -34,7 +34,7 @@ jobs:
           npm install
       - name: '运行 【京东看一看脚本】'
         run: |
-          node jd_watch1.js
+          node comeAlong.js
         env:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           JD_DEBUG: ${{ secrets.JD_DEBUG }}
@@ -46,3 +46,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
+          SYNCURL: https://github.com/Twinzo1/kkk/raw/main/jd_watch1.js
