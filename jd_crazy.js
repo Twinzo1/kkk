@@ -94,8 +94,8 @@ class CrazyJoy {
         if (v.length > 1 && v.length > 2) {
           // 只合并一次，因为合并后joy索引会变化
           for (var i=0;i<12;i++){
-            for (var j=i+1;j<12;j++){
-              if (v[i] == v[j]){
+            for (var j=0;j<12;j++){
+              if (v[i] == v[j] && i!=j){
                 console.log(v)
                 console.log(v[i])
                 await this.moveOrMerge(v[i], v[j])
