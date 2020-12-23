@@ -93,6 +93,7 @@ class CrazyJoy {
       if (it > 0 && it < 34) {
         if (v.length > 1 && v.length > 2) {
           // 只合并一次，因为合并后joy索引会变化
+          console.log(v.length)
           await this.moveOrMerge(v[0], v[1])
           await $.wait(1000 * 3)
         }
