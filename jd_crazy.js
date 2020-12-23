@@ -90,6 +90,10 @@ class CrazyJoy {
     let maybe = calc(this.ctx.joyIds)
     for (const it of Object.keys(maybe)) {
       let v = maybe[it]
+      console.log(maybe)
+      console.log(v)
+      console.log(it)
+      return
       if (it > 0 && it < 34) {
         if (v.length > 1 && v.length > 2) {
           // 只合并一次，因为合并后joy索引会变化
