@@ -88,7 +88,7 @@ class CrazyJoy {
     await this.joyList()
     // 开始合并
     let maybe = calc(this.ctx.joyIds)
-    for (it=1;it<34;it++) {
+    for (it in Object.keys(maybe)) {
       let v = maybe[it]
       console.log(maybe)
       console.log(v)
