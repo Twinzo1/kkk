@@ -90,13 +90,15 @@ class CrazyJoy {
     let maybe = calc(this.ctx.joyIds)
     let it = 1
     for (it in Object.keys(maybe)) {
+      if (it == 0) continue;
       let v = maybe[it]
       console.log(maybe)
       console.log(v)
       console.log(it)
       if (it > 0 && it < 34) {
-        if (v.length > 1 && v.length > 2) {
+        if (v.length > 1) {
           // 只合并一次，因为合并后joy索引会变化
+            
             await this.moveOrMerge(v[0], v[1])
             await $.wait(1000 * 3)
         }
