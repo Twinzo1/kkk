@@ -96,8 +96,11 @@ class CrazyJoy {
           for (var i=0;i<12;i++){
             for (var j=i+1;j<12;j++){
               if (v[i] == v[j]){
+                console.log(v)
+                console.log(v[i])
                 await this.moveOrMerge(v[i], v[j])
                 await $.wait(1000 * 3)
+                break;
               }
             }
           }
