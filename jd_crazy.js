@@ -88,26 +88,16 @@ class CrazyJoy {
     await this.joyList()
     // 开始合并
     let maybe = calc(this.ctx.joyIds)
-    for (const it of Object.keys(maybe)) {
+    for (it=1;it<34;it++) {
       let v = maybe[it]
       console.log(maybe)
       console.log(v)
       console.log(it)
-      return
       if (it > 0 && it < 34) {
         if (v.length > 1 && v.length > 2) {
           // 只合并一次，因为合并后joy索引会变化
-          for (var i=0;i<12;i++){
-            for (var j=0;j<12;j++){
-              if (v[i] == v[j] && i!=j){
-                console.log(v)
-                console.log(v[i])
-                await this.moveOrMerge(v[i], v[j])
-                await $.wait(1000 * 3)
-                break;
-              }
-            }
-          }
+            await this.moveOrMerge(v[0], v[1])
+            await $.wait(1000 * 3)
         }
       }
     }
