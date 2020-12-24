@@ -78,13 +78,6 @@ class CrazyJoy {
     // 刷新商店
     await this.shop()
     console.log(`joy列表 ${this.ctx.joyIds}`)
-    for (let i = 0; i < this.ctx.joyIds.length; i++) {
-      let joy = this.ctx.joyIds[i]
-      if (joy === 0) {
-        await this.trade(BUY_JOY_LEVEL)
-        await $.wait(1000)
-      }
-    }
     await this.joyList()
     // 开始合并
     let maybe = calc(this.ctx.joyIds)
@@ -93,12 +86,26 @@ class CrazyJoy {
       console.log(maybe)
       console.log(v)
       console.log(it)
+      if(it==11) {
+        await this.trade1(maybe[Object.keys(maybe)[0],maybe[Object.keys(maybe)[0]][0])
+        await $.wait(1000)
+        await this.trade(maybe[Object.keys(maybe)[1])
+        await $.wait(1000)
+      }
       if (Object.keys(maybe)[it] > 0 && Object.keys(maybe)[it] < 34) {
         if (v.length > 1) {
           // 只合并一次，因为合并后joy索引会变化
             await this.moveOrMerge(v[0], v[1])
             await $.wait(1000 * 3)
         }
+      }
+    }
+    let maybe1 = calc(this.ctx.joyIds)
+    for (let i = 0; i < this.ctx.joyIds.length; i++) {
+      let joy = this.ctx.joyIds[i]
+      if (joy === 0) {
+        await this.trade(maybe1[Object.keys(maybe)[0])
+        await $.wait(1000)
       }
     }
   }
