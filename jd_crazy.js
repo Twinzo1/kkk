@@ -93,7 +93,7 @@ class CrazyJoy {
       console.log(maybe)
       console.log(v)
       console.log(it)
-      if (it > 0 && it < 34) {
+      if (Object.keys(maybe)[it] > 0 && Object.keys(maybe)[it] < 34) {
         if (v.length > 1) {
           // 只合并一次，因为合并后joy索引会变化
             await this.moveOrMerge(v[0], v[1])
