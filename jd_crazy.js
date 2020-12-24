@@ -90,7 +90,7 @@ class CrazyJoy {
     let maybe = calc(this.ctx.joyIds)
     for (let it=1;it<34;it++) {
       let v = maybe[it]
-      if (v != undefined) continue;
+      if (v == undefined) continue;
       console.log(maybe)
       console.log(v)
       console.log(it)
