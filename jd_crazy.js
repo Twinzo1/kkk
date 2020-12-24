@@ -89,7 +89,7 @@ class CrazyJoy {
       if(it==11) {
         await this.trade1(maybe[Object.keys(maybe)[0]],maybe[Object.keys(maybe)[0]][0])
         await $.wait(1000)
-        await this.trade(maybe[Object.keys(maybe)[1])
+        await this.trade(maybe[Object.keys(maybe)[1]])
         await $.wait(1000)
       }
       if (Object.keys(maybe)[it] > 0 && Object.keys(maybe)[it] < 34) {
@@ -104,7 +104,7 @@ class CrazyJoy {
     for (let i = 0; i < this.ctx.joyIds.length; i++) {
       let joy = this.ctx.joyIds[i]
       if (joy === 0) {
-        await this.trade(maybe1[Object.keys(maybe)[0])
+        await this.trade(maybe1[Object.keys(maybe)[0]])
         await $.wait(1000)
       }
     }
