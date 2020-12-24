@@ -83,12 +83,11 @@ class CrazyJoy {
     let maybe = calc(this.ctx.joyIds)
     for (let it in Object.keys(maybe)) {
       let v = maybe[Object.keys(maybe)[it]]
-      let v0 = maybe[Object.keys(maybe)[0]]
       console.log(maybe)
       console.log(v)
       console.log(it)
       if(it==11) {
-        await this.trade1(maybe[Object.keys(maybe)[0],v0[0])
+        await this.trade1(maybe[Object.keys(maybe)[0]],maybe[Object.keys(maybe)[0]][0])
         await $.wait(1000)
         await this.trade(maybe[Object.keys(maybe)[1])
         await $.wait(1000)
