@@ -4,7 +4,8 @@
 50 23 */3 * * rm -rf /scripts/logs/*.log
 
 ##############短期活动##############
-
+# 健康抽奖机(2020.12.31活动过期)
+10 0 1-31 12 * node /scripts/jd_health.js >> /scripts/logs/jd_health.log 2>&1
 ##############长期活动##############
 # 签到
 0 0,18 * * * cd /scripts && node jd_bean_sign.js >> /scripts/logs/jd_bean_sign.log 2>&1
@@ -59,7 +60,7 @@
 # 十元街
 36 8,18 * * * node /scripts/jd_syj.js >> /scripts/logs/jd_syj.log 2>&1
 # 京东代属(注:限校园用户可使用)
-36 9 * * * node /scripts/jd_ds.js >> /scripts/logs/jd_ds.log 2>&1
+# 36 9 * * * node /scripts/jd_ds.js >> /scripts/logs/jd_ds.log 2>&1
 # 京东快递签到
 23 1 * * * node /scripts/jd_kd.js >> /scripts/logs/jd_kd.log 2>&1
 # 京东汽车(签到满500赛点可兑换500京豆)
