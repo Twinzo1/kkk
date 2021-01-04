@@ -96,6 +96,11 @@ class CrazyJoy {
             await $.wait(1000 * 3)
         }
       }
+      elseif(Object.keys(maybe)[it] == 34 && v.length >= 5) {
+            await this.moveOrMerge(v[0], v[1])
+            await $.wait(1000 * 3)
+        }
+      }
     }
     let maybe1 = calc(this.ctx.joyIds)
     let joylevel = Object.keys(maybe1)[0]
