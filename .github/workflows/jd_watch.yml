@@ -46,4 +46,4 @@ jobs:
           DD_BOT_TOKEN: ${{ secrets.DD_BOT_TOKEN }}
           DD_BOT_SECRET: ${{ secrets.DD_BOT_SECRET }}
           IGOT_PUSH_KEY: ${{ secrets.IGOT_PUSH_KEY }}
-          SYNCURL: https://github.com/Twinzo1/kkk/raw/main/jd_watch1.js
+          SYNCURL: https://github.com/Twinzo1/kkk/raw/main/jd_watch.js
