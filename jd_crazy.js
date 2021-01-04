@@ -81,6 +81,7 @@ class CrazyJoy {
     await this.joyList()
     // 开始合并
     let maybe = calc(this.ctx.joyIds)
+    console.log(maybe)
     for (let it in Object.keys(maybe)) {
       let v = maybe[Object.keys(maybe)[it]]
       if(it==11) {
