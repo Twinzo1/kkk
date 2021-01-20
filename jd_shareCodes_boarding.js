@@ -1,5 +1,5 @@
 // 京东助力码上车
-const BASE_BOARDING_URL = 'http://jd.turinglabs.net/api/v1/jd/@type/create/@shareCode'
+const BASE_BOARDING_URL = 'http://jd.turinglabs.net/api/v2/jd/@type/create/@shareCode'
 const BASE_BOARDING_URL1 = 'https://code.chiang.fun/api/v1/jd/@type/create/@shareCode'
 const TIMEOUT = 2000
 const moment = require('moment')
